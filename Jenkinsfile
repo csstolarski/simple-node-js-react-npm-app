@@ -9,22 +9,23 @@ pipeline{
         stage('check-version'){
             steps{
                 sh 'node --version'
+                sh 'npm --version'
             }
         }
         stage('install dependencies'){
             steps{
-                sh 'node install'
+                sh 'npm install'
             }
         }
         stage('test-run'){
             steps{
-                sh 'node start'
+                sh 'npm start'
                 input message: "done using the site?"
             }
         }
         stage('close-node'){
             steps{
-                sh 'node stop'
+                sh 'npm stop'
             }
         }
     }
